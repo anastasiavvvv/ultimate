@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ULTIMATE — 11 вариантов оформления</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Cormorant+Garamond:wght@500;600&family=JetBrains+Mono:wght@500&family=Anton&family=Oswald:wght@500;600;700&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0a0c; color: #e8e8ec; font-family: Inter, system-ui, sans-serif; padding: 32px 24px 80px; }
+  h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .sub { color: #8b8b95; font-size: 14px; margin-bottom: 28px; }
+  .group { font-size: 12px; text-transform: uppercase; letter-spacing: .14em; color: #8b8b95; margin: 30px 0 14px; font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 22px; }
+  .variant { display: flex; flex-direction: column; gap: 10px; }
+  .variant .label { display: flex; align-items: baseline; gap: 10px; }
+  .variant .num { font-family: "JetBrains Mono", monospace; font-size: 13px; color: #8b8b95; }
+  .variant .name { font-size: 15px; font-weight: 600; }
+  .variant .desc { font-size: 12.5px; color: #8b8b95; line-height: 1.4; }
+
+  /* ---------- мини-макет приложения ---------- */
+  .mock {
+    --radius: 14px; --font-h: Inter, sans-serif; --font-n: Inter, sans-serif;
+    position: relative; overflow: hidden; height: 290px; border-radius: 16px;
+    display: grid; grid-template-columns: 118px 1fr; background: var(--bg); color: var(--fg);
+    font-size: 10px; border: 1px solid var(--line); box-shadow: 0 20px 50px -20px rgba(0,0,0,.8);
+  }
+  .mock .fx { position: absolute; inset: 0; pointer-events: none; }
+  .mock .side { position: relative; z-index: 1; padding: 14px 10px; border-right: 1px solid var(--line); background: var(--side); display: flex; flex-direction: column; gap: 3px; }
+  .mock .brand { display: flex; align-items: center; gap: 7px; font-weight: 700; font-size: 12px; margin-bottom: 10px; font-family: var(--font-h); letter-spacing: -0.01em; }
+  .mock .logo { width: 16px; height: 16px; border-radius: 5px; background: var(--accent); box-shadow: 0 0 14px var(--glow); }
+  .mock .nav { padding: 5px 8px; border-radius: 7px; color: var(--fg2); display: flex; gap: 6px; align-items: center; }
+  .mock .nav i { width: 8px; height: 8px; border-radius: 3px; background: currentColor; opacity: .5; }
+  .mock .nav.on { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  .mock .main { position: relative; z-index: 1; padding: 14px; display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+  .mock .eyebrow { font-size: 7.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--fg3); font-weight: 600; }
+  .mock h2 { font-family: var(--font-h); font-size: 19px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; margin-top: 2px; }
+  .mock .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+  .mock .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 9px; backdrop-filter: blur(10px); }
+  .mock .card .k { color: var(--fg3); font-size: 7.5px; text-transform: uppercase; letter-spacing: .08em; }
+  .mock .card .v { font-family: var(--font-n); font-size: 15px; font-weight: 700; margin-top: 2px; letter-spacing: -0.02em; }
+  .mock .card .v small { font-size: 8px; color: var(--fg2); font-weight: 500; }
+  .mock .bar { height: 4px; border-radius: 3px; background: var(--track); margin-top: 6px; overflow: hidden; }
+  .mock .bar i { display: block; height: 100%; border-radius: 3px; background: var(--accent); box-shadow: 0 0 8px var(--glow); }
+  .mock .row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 7px; flex: 1; min-height: 0; }
+  .mock .list { display: flex; flex-direction: column; gap: 5px; }
+  .mock .item { display: flex; align-items: center; gap: 6px; color: var(--fg2); }
+  .mock .item b { width: 9px; height: 9px; border-radius: 3px; border: 1px solid var(--line2); flex-shrink: 0; }
+  .mock .item.done { text-decoration: line-through; color: var(--fg3); }
+  .mock .item.done b { background: var(--accent); border-color: var(--accent); }
+  .mock .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+  .mock .chip { padding: 3px 6px; border-radius: 20px; background: var(--accent-soft); color: var(--accent); font-size: 8px; font-weight: 600; }
+  .mock .chip.g { background: var(--good-soft); color: var(--good); }
+  .mock .btn { margin-top: auto; align-self: flex-start; padding: 5px 9px; border-radius: 7px; background: var(--accent); color: var(--accent-ink); font-weight: 600; font-size: 8.5px; box-shadow: 0 6px 16px -6px var(--glow); }
+  .mock h3 { font-size: 9.5px; font-weight: 600; margin-bottom: 6px; }
+
+  /* ================= КОСМОС ================= */
+  .t1 { --bg:#070716; --side:rgba(10,10,32,.6); --surface:rgba(255,255,255,.05); --fg:#EEF0FF; --fg2:#A3A7CC; --fg3:#6C7099; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.18); --accent:#8B7CFF; --accent-ink:#fff; --accent-soft:rgba(139,124,255,.16); --glow:rgba(139,124,255,.6); --track:rgba(255,255,255,.08); --good:#5EEAD4; --good-soft:rgba(94,234,212,.14); --font-h:"Space Grotesk",sans-serif; --font-n:"Space Grotesk",sans-serif; }
+  .t1 .fx { background: radial-gradient(ellipse 60% 50% at 80% 10%, rgba(120,90,255,.45), transparent 60%), radial-gradient(ellipse 50% 40% at 20% 90%, rgba(60,140,255,.3), transparent 60%); }
+  .t1 .fx::after, .t2 .fx::after, .t3 .fx::after, .t5 .fx::after { content:""; position:absolute; inset:0; background-image: radial-gradient(1px 1px at 20% 30%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 70% 15%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 85% 60%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 40% 75%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 60% 45%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 30% 55%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 92% 88%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 50% 10%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 10% 70%, #fff 50%, transparent 51%); opacity:.7; }
+
+  .t2 { --bg:#000; --side:#000; --surface:#0B0B0F; --fg:#F4F4F6; --fg2:#9A9AA6; --fg3:#5C5C68; --line:rgba(255,255,255,.1); --line2:rgba(255,255,255,.22); --accent:#4CE0FF; --accent-ink:#001015; --accent-soft:rgba(76,224,255,.12); --glow:rgba(76,224,255,.45); --track:#1A1A20; --good:#4CE0FF; --good-soft:rgba(76,224,255,.12); --radius:8px; --font-h:"Space Grotesk",sans-serif; --font-n:"JetBrains Mono",monospace; }
+  .t2 .fx { background: radial-gradient(circle at 100% 0%, rgba(76,224,255,.12), transparent 40%); }
+  .t2 .fx::after { opacity:.35; }
+
+  .t3 { --bg:#041012; --side:rgba(4,20,22,.7); --surface:rgba(255,255,255,.05); --fg:#E8FBF6; --fg2:#9CC8BF; --fg3:#5E8A82; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.2); --accent:#4AF0B2; --accent-ink:#031510; --accent-soft:rgba(74,240,178,.14); --glow:rgba(74,240,178,.5); --track:rgba(255,255,255,.08); --good:#C4B5FD; --good-soft:rgba(196,181,253,.16); --font-h:Inter,sans-serif; --font-n:Inter,sans-serif; }
+  .t3 .fx { background: linear-gradient(160deg, rgba(74,240,178,.28) 0%, rgba(80,120,255,.22) 35%, transparent 60%), radial-gradient(ellipse 50% 30% at 50% 100%, rgba(140,80,255,.25), transparent); }
+
+  .t4 { --bg:#0B0806; --side:rgba(16,10,6,.6); --surface:rgba(255,255,255,.045); --fg:#FFF4E8; --fg2:#C2A98F; --fg3:#7C6650; --line:rgba(255,200,150,.1); --line2:rgba(255,200,150,.25); --accent:#FFA447; --accent-ink:#2A1200; --accent-soft:rgba(255,164,71,.15); --glow:rgba(255,164,71,.55); --track:rgba(255,255,255,.08); --good:#FFD56A; --good-soft:rgba(255,213,106,.14); --font-h:"Cormorant Garamond",serif; --font-n:Inter,sans-serif; }
+  .t4 h2 { font-size: 24px; font-weight: 500; }
+  .t4 .fx { background: radial-gradient(circle at 110% 110%, rgba(255,140,40,.55), rgba(255,80,20,.2) 30%, transparent 55%), radial-gradient(circle at 0% 0%, rgba(255,120,60,.12), transparent 40%); }
+
+  .t5 { --bg:#120A24; --side:rgba(20,10,40,.45); --surface:rgba(255,255,255,.08); --fg:#FBF5FF; --fg2:#C9B8E6; --fg3:#8B79AD; --line:rgba(255,255,255,.14); --line2:rgba(255,255,255,.3); --accent:#FF6AD5; --accent-ink:#2C0A24; --accent-soft:rgba(255,106,213,.18); --glow:rgba(255,106,213,.55); --track:rgba(255,255,255,.12); --good:#7CF5FF; --good-soft:rgba(124,245,255,.16); --radius:16px; --font-h:"Space Grotesk",sans-serif; --font-n:"Space Grotesk",sans-serif; }
+  .t5 .fx { background: radial-gradient(ellipse 70% 60% at 30% 20%, rgba(255,80,200,.5), transparent 60%), radial-gradient(ellipse 60% 60% at 90% 80%, rgba(80,120,255,.55), transparent 60%), radial-gradient(ellipse 40% 40% at 70% 30%, rgba(255,170,60,.25), transparent 60%); }
+  .t5 .card { border-color: rgba(255,255,255,.2); box-shadow: inset 0 1px 0 rgba(255,255,255,.2); }
+
+  /* ================= ГРАФИТ ================= */
+  .t6 { --bg:#121212; --side:#121212; --surface:#1A1A1A; --fg:#F2F2F2; --fg2:#9E9E9E; --fg3:#616161; --line:rgba(255,255,255,.07); --line2:rgba(255,255,255,.2); --accent:#FFFFFF; --accent-ink:#111; --accent-soft:rgba(255,255,255,.1); --glow:transparent; --track:#262626; --good:#F2F2F2; --good-soft:rgba(255,255,255,.08); --radius:10px; --font-h:Inter,sans-serif; --font-n:Inter,sans-serif; }
+
+  .t7 { --bg:#0F0F10; --side:#0F0F10; --surface:#171718; --fg:#EDEDEF; --fg2:#8E8E93; --fg3:#5B5B61; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.2); --accent:#C8FF3D; --accent-ink:#121400; --accent-soft:rgba(200,255,61,.12); --glow:rgba(200,255,61,.3); --track:#242426; --good:#C8FF3D; --good-soft:rgba(200,255,61,.12); --radius:8px; --font-h:"Space Grotesk",sans-serif; --font-n:"JetBrains Mono",monospace; }
+
+  .t8 { --bg:#111417; --side:#0E1114; --surface:#181C21; --fg:#EAF0F6; --fg2:#8E9AA8; --fg3:#56616E; --line:rgba(255,255,255,.07); --line2:rgba(255,255,255,.18); --accent:#3D8BFF; --accent-ink:#fff; --accent-soft:rgba(61,139,255,.14); --glow:rgba(61,139,255,.4); --track:#232A32; --good:#38D39F; --good-soft:rgba(56,211,159,.14); --radius:10px; --font-h:Inter,sans-serif; --font-n:Inter,sans-serif; }
+  .t8 .fx { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(180deg, #000, transparent 85%); }
+
+  .t9 { --bg:#1A1816; --side:#1A1816; --surface:#211F1C; --fg:#F3EDE4; --fg2:#A89F92; --fg3:#6E675D; --line:rgba(255,235,210,.08); --line2:rgba(255,235,210,.2); --accent:#E0A458; --accent-ink:#1A1200; --accent-soft:rgba(224,164,88,.14); --glow:rgba(224,164,88,.25); --track:#2C2925; --good:#9DC08B; --good-soft:rgba(157,192,139,.14); --radius:14px; --font-h:"Cormorant Garamond",serif; --font-n:Inter,sans-serif; }
+  .t9 h2 { font-size: 24px; font-weight: 500; }
+
+  .t10 { --bg:#171B22; --side:#141820; --surface:#1E232C; --fg:#E9EDF3; --fg2:#98A2B3; --fg3:#5F6B7D; --line:rgba(255,255,255,.06); --line2:rgba(255,255,255,.16); --accent:#7DE2C3; --accent-ink:#06211A; --accent-soft:rgba(125,226,195,.14); --glow:rgba(125,226,195,.25); --track:#2A313C; --good:#9DB6FF; --good-soft:rgba(157,182,255,.14); --radius:18px; --font-h:Inter,sans-serif; --font-n:Inter,sans-serif; }
+  .t10 .card { border: 0; box-shadow: 0 1px 0 rgba(255,255,255,.04) inset; }
+  /* ================= ТИТАН (агрессивный) ================= */
+  .t11 { --bg:#0A0A0A; --side:#0D0D0D; --surface:#141414; --fg:#F1EDE6; --fg2:#A8A29A; --fg3:#6B655E; --line:rgba(255,255,255,.1); --line2:rgba(255,255,255,.28); --accent:#D7142B; --accent-ink:#fff; --accent-soft:rgba(215,20,43,.16); --glow:rgba(215,20,43,.45); --track:#262626; --good:#F1EDE6; --good-soft:rgba(241,237,230,.1); --radius:2px; --font-h:Anton,Oswald,sans-serif; --font-n:Oswald,sans-serif; }
+  .t11 .fx { background:
+      linear-gradient(115deg, transparent 0 58%, rgba(215,20,43,.12) 58% 58.6%, transparent 58.6% 64%, rgba(215,20,43,.07) 64% 64.3%, transparent 64.3%),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,.025) 0 2px, transparent 2px 9px),
+      radial-gradient(ellipse 60% 70% at 100% 100%, rgba(215,20,43,.28), transparent 60%); }
+  .t11 .side { border-right: 2px solid var(--accent); }
+  .t11 .brand { font-family: Anton, sans-serif; letter-spacing: .08em; text-transform: uppercase; font-size: 12.5px; }
+  .t11 .logo { border-radius: 0; transform: skewX(-12deg); }
+  .t11 .nav { border-radius: 0; text-transform: uppercase; letter-spacing: .08em; font-family: Oswald, sans-serif; font-size: 9.5px; }
+  .t11 .nav.on { background: var(--accent); color: #fff; box-shadow: 4px 0 0 0 #fff inset; }
+  .t11 .nav i { border-radius: 0; }
+  .t11 .eyebrow { color: var(--accent); letter-spacing: .22em; font-weight: 700; }
+  .t11 h2 { font-family: Anton, sans-serif; text-transform: uppercase; font-size: 24px; letter-spacing: .02em; line-height: .95; }
+  .t11 h2::after { content: "Нет отступления. Только вперёд."; display: block; font-family: Oswald, sans-serif; font-weight: 500; text-transform: none; letter-spacing: .02em; font-size: 8.5px; color: var(--fg2); margin-top: 4px; }
+  .t11 .card { border-left: 3px solid var(--line2); }
+  .t11 .card .k { font-family: Oswald, sans-serif; letter-spacing: .16em; }
+  .t11 .card .v { font-size: 18px; letter-spacing: 0; }
+  .t11 .bar { height: 5px; border-radius: 0; transform: skewX(-20deg); }
+  .t11 .bar i { border-radius: 0; }
+  .t11 h3 { text-transform: uppercase; letter-spacing: .14em; font-family: Oswald, sans-serif; font-size: 9px; }
+  .t11 .chip { border-radius: 0; text-transform: uppercase; letter-spacing: .08em; }
+  .t11 .chip.g { background: var(--accent); color: #fff; }
+  .t11 .btn { border-radius: 0; text-transform: uppercase; letter-spacing: .14em; font-family: Oswald, sans-serif; transform: skewX(-8deg); }
+  .t11 .item b { border-radius: 0; }
+</style>
+</head>
+<body>
+<h1>ULTIMATE — 11 вариантов оформления</h1>
+<p class="sub">Каждая карточка — одна и та же страница «Сегодня» в разной теме. Напишите номер, который нравится. Можно назвать два: «цвета из 3, шрифты из 9».</p>
+
+<div class="group">Космос</div>
+<div class="grid" id="cosmos"></div>
+
+<div class="group">Графит, минимализм</div>
+<div class="grid" id="graphite"></div>
+
+<div class="group">Агрессивный, боевой</div>
+<div class="grid" id="titan"></div>
+
+<template id="mock">
+  <div class="mock">
+    <div class="fx"></div>
+    <div class="side">
+      <div class="brand"><span class="logo"></span>ULTIMATE</div>
+      <div class="nav on"><i></i>Сегодня</div>
+      <div class="nav"><i></i>Цели и задачи</div>
+      <div class="nav"><i></i>Привычки</div>
+      <div class="nav"><i></i>Рефлексия</div>
+      <div class="nav"><i></i>Здоровье</div>
+      <div class="nav"><i></i>Финансы</div>
+    </div>
+    <div class="main">
+      <div><div class="eyebrow">Вторник, 18 ноября</div><h2>Добрый вечер, Настя</h2></div>
+      <div class="stats">
+        <div class="card"><div class="k">Задачи</div><div class="v">4<small>/7</small></div><div class="bar"><i style="width:57%"></i></div></div>
+        <div class="card"><div class="k">Привычки</div><div class="v">5<small>/6</small></div><div class="bar"><i style="width:83%"></i></div></div>
+        <div class="card"><div class="k">Сон</div><div class="v">7.5<small> ч</small></div><div class="bar"><i style="width:94%"></i></div></div>
+      </div>
+      <div class="row">
+        <div class="card">
+          <h3>Фокус дня</h3>
+          <div class="list">
+            <div class="item done"><b></b>Утренняя тренировка</div>
+            <div class="item done"><b></b>Планёрка по проекту</div>
+            <div class="item"><b></b>Дочитать главу книги</div>
+            <div class="item"><b></b>Запись в дневник</div>
+          </div>
+          <div class="btn">+ Добавить задачу</div>
+        </div>
+        <div class="card">
+          <h3>Привычки</h3>
+          <div class="chips"><span class="chip g">Вода ✓</span><span class="chip g">Шаги ✓</span><span class="chip">Чтение</span><span class="chip g">Сон ✓</span><span class="chip">Медитация</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  const variants = [
+    ['cosmos', 1, 'Nebula', 'Глубокий сине-фиолетовый космос, туманность и звёзды, стеклянные панели, фиолетовое свечение. Ближе всего к ULTIMATE.'],
+    ['cosmos', 2, 'Deep Space', 'Чистый чёрный, редкие звёзды, холодный циановый акцент, моноширинные цифры. Строго и технологично.'],
+    ['cosmos', 3, 'Aurora', 'Северное сияние: зелёно-бирюзовые переливы в синий, мятный акцент. Космос, но мягкий и живой.'],
+    ['cosmos', 4, 'Solar', 'Тёмное небо и тёплое солнечное свечение из угла, янтарный акцент, заголовки с засечками. Уютный космос.'],
+    ['cosmos', 5, 'Galaxy Glass', 'Яркая галактика розово-синих оттенков под матовым стеклом, сильный контраст, неоновый розовый акцент.'],
+    ['graphite', 6, 'Graphite Mono', 'Только оттенки серого и белый акцент. Никаких цветов, максимум тишины. Как у Vercel и Apple.'],
+    ['graphite', 7, 'Graphite + Lime', 'Угольный фон и один кислотно-лаймовый акцент, моноширинные цифры. В духе Linear и Raycast.'],
+    ['graphite', 8, 'Carbon Blue', 'Графит с едва заметной сеткой и электрическим синим. Рабочий, собранный, «инженерный».'],
+    ['graphite', 9, 'Obsidian Warm', 'Тёплый тёмно-серый, кремовый текст, янтарный акцент, заголовки с засечками. Спокойная «библиотека».'],
+    ['titan', 11, 'Titan', 'Чёрный, сталь и кровавый алый. Тяжёлые заглавные шрифты, косые срезы, красные штрихи, лозунг под заголовком. Каждый вход в приложение — как выход на стену.'],
+    ['graphite', 10, 'Slate Soft', 'Сланцево-синий графит, большие скругления, мягкие панели без рамок, мятный акцент. Самый дружелюбный.'],
+  ];
+  const tpl = document.getElementById('mock');
+  for (const [group, n, name, desc] of variants) {
+    const wrap = document.createElement('div');
+    wrap.className = 'variant';
+    wrap.innerHTML = `<div class="label"><span class="num">${String(n).padStart(2, '0')}</span><span class="name">${name}</span></div>`;
+    const m = tpl.content.firstElementChild.cloneNode(true);
+    m.classList.add('t' + n);
+    wrap.appendChild(m);
+    wrap.insertAdjacentHTML('beforeend', `<div class="desc">${desc}</div>`);
+    document.getElementById(group).appendChild(wrap);
+  }
+</script>
+</body>
+</html>

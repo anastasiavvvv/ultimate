@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ULTIMATE</title>
+<meta name="description" content="ULTIMATE — личная эффективность: цели, привычки, здоровье, обучение, финансы, рефлексия.">
+<meta name="theme-color" content="#F5F6F8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ULTIMATE">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar"></aside>
+  <main id="main"><div id="page"></div></main>
+</div>
+<div id="modals"></div>
+<div id="toasts"></div>
+<div id="tooltip" role="tooltip"></div>
+<canvas id="confetti"></canvas>
+<script type="module" src="src/app.js"></script>
+<script type="module" src="src/pwa.js"></script>
+</body>
+</html>
